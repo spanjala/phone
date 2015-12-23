@@ -1,0 +1,30 @@
+.gragudteimg:before{content: url('/static/images/gr.jpg'); display:block; margin-right:312px}
+
+.jumbotron p{font-size:14px !important;}
+.jum{
+  background-color: black;
+  opacity: 0.65;
+}
+.expimage{margin-right:230px}
+.logbtn{
+  background-color: #1ab394;
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px 0px 5px 0px;
+}
+.login-top:{ margin-top:60px;}
+.col-md-4{
+         width:300px;
+         margin-top: 25px;
+}
+
+.fbimg{font-color: #1ab394;
+}
+.user-name
+{
+	padding:12px;
+}
+.loginbtn
+{
+	margin:0 0 10px 10px;
+}

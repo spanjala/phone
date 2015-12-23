@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Phone-o-friend</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.css" rel="stylesheet">
+     <link href="/static/css/plugins/iCheck/custom.css" rel="stylesheet">
+     <link href="/static/css/ampm.css"  rel="stylesheet">
+
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+     <link href="/static/css/justified-nav.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+<p><span style="float: right;color:#fff;color:green;" >Hi Welcome to {{request.user.username}}</span>
+<div>
+      <a href="/logout/" class="btn btn-info btn-lg pull-right" style="margin:0 0 10px 10px;" >
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+
+        </a>
+</div>
+<div style="display:block; clear: both;" >
+      <a href="/get_product_list/" class="btn btn-info btn-lg pull-left" style="margin:0 0 10px 10px;" >
+          <span class="glyphicon glyphicon-backward"></span> Product List
+        </a>
+</div>
+<div style="display:block;clear: both;">
+      <a href="/changepassword/" class="btn btn-info btn-lg pull-left" style="margin:0 0 10px 10px;" >
+          <span class="glyphicon glyphicon-pencil"></span> Change Password
+        </a>
+
+</div>
+</div>
+
+</div>
+
+
+      <!-- The justified navigation menu is meant for single line per list item.
+           Multiple lines will require custom code not provided by Bootstrap. -->
+      <div class="masthead">
+
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen animated fadeInDown login-top">
+        <div>
+            <div>
+
+            </div>
+            <p>wlecome to phone-o-friend app </p>
+            <p>{{request.user.username}}
+            <form id="bootstrapSelectForm" method="post" class="form-horizontal" action="/vendor/" enctype="multipart/form-data"> 
+              {%csrf_token%}
+                {% if form.errors%}
+		   <font color="red">* All fields are mandatory</font></br>
+		{% endif %}
+                {{ form.as_p }}
+ <div class="form-group">
+
+                </div>
+
+ <button style="background-color: #1ab394;  width: 100%;  border-radius: 10px;  padding: 8px 0px 8px 0px; color:#fff;" value="submit">Submit</button>
+
+</form>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+
+$(document).ready(function () {
+  //your code here
+
+  $('#id_category_name').change(function(){
+     var val = $(this).val();
+     request_url = "/category_id/"+val+"/"
+     $('#id_subcategory_name').empty();
+     $('#id_subcategory_name').append('<option value="">select</option>');
+     $.ajax({
+       url: request_url,
+       success: function(data){
+          $.each(data,function(key,value){
+              $('#id_subcategory_name').append('<option value="'+ key +'">'+ value +'</option>');
+          });
+       }
+  });
+  });
+  $('#id_subcategory_name').change(function(){
+     var val = $(this).val();
+     request_url = "/subcategory_id/"+val+"/"
+     $('#id_brand_name').empty();
+     $('#id_brand_name').append('<option value="">select</option>');
+     $.ajax({
+       url: request_url,
+       success: function(data){
+          $.each(data,function(key,value){
+              $('#id_brand_name').append('<option value="'+ key +'">'+ value +'</option>');
+          });
+       }
+  });
+  });
+
+});
+</script>
+    <!-- Mainly scripts 
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script> -->
+
+</body>
+
+</html>
+
+
